@@ -1,0 +1,21 @@
+{% extends "base.html" %}{% block title %}Reporte{% endblock %}
+{% block content %}
+<div class="card noprint"><h2>Reporte de gastos</h2>
+<form class="inline" method="get">
+<label>Desde<input type="date" name="desde" value="{{ desde }}"></label>
+<label>Hasta<input type="date" name="hasta" value="{{ hasta }}"></label>
+<button>Filtrar</button>
+<a class="btn" href="#" onclick="window.print();return false">Imprimir</a></form></div>
+<div class="card"><div class="stats">
+<div class="stat">Total<b>{{ "%.2f"|format(total) }}</b></div>
+<div class="stat">N.º de gastos<b>{{ gastos|length }}</b></div>
+<div class="stat">Promedio<b>{{ "%.2f"|format(promedio) }}</b></div></div></div>
+<div class="card"><h2>Total por mes</h2>
+<table><tr><th>Mes</th><th class="num">Total</th></tr>
+{% for mes, t in por_mes.items() %}<tr><td>{{ mes }}</td><td class="num">{{ "%.2f"|format(t) }}</td></tr>
+{% else %}<tr><td colspan="2">Sin datos.</td></tr>{% endfor %}</table></div>
+<div class="card"><h2>Detalle</h2>
+<table><tr><th>Fecha</th><th>Descripción</th><th class="num">Monto</th></tr>
+{% for g in gastos %}<tr><td>{{ g.fecha }}</td><td>{{ g.descripcion }}</td><td class="num">{{ "%.2f"|format(g.monto) }}</td></tr>{% endfor %}
+<tr><th colspan="2">TOTAL</th><th class="num">{{ "%.2f"|format(total) }}</th></tr></table></div>
+{% endblock %}
