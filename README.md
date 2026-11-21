@@ -5,9 +5,8 @@ Aplicación web para registrar gastos personales (fecha, descripción y monto) y
 **Stack:** Python · Flask · SQLite
 
 ## Credenciales de acceso
-| Usuario | Clave |
-|---------|-------|
-| `admin` | `123` |
+- **Usuario:** `admin`
+- **Clave:** `123`
 
 ## Instalación y ejecución
 ```bash
